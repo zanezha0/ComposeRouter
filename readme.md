@@ -13,7 +13,7 @@ val navOptions = navOptions {
 Router.to(TwoDestination,navOptions)
 ```
 
-### 清除回收站
+### 清除返回栈
 ```kotlin
 Router.offAllTo(OneDestination)
 ```
