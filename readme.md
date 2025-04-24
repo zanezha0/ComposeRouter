@@ -2,7 +2,15 @@
 
 ### 导航
 ```kotlin
-Router.to(TwoDestination)
+val navOptions = navOptions {
+    popUpTo<ThreeDestination> {
+        saveState = true
+        inclusive = true
+    }
+    launchSingleTop = true
+    restoreState = true
+}
+Router.to(TwoDestination,navOptions)
 ```
 
 ### 清除回收站

@@ -37,7 +37,6 @@ object Router: IRouter {
 
     override fun to(route: Any, navOptions: NavOptions, navigatorExtras: Navigator.Extras?) {
         navigate(RouterIntent.ToWithOptions(route = route,navOptions,navigatorExtras))
-
     }
 
     override fun replace(route: Any, isSingleTop: Boolean) {
