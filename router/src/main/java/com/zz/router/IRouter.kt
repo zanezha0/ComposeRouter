@@ -1,6 +1,9 @@
 package com.zz.router
 
 import android.os.Bundle
+import androidx.navigation.NavOptions
+import androidx.navigation.Navigator
+import kotlin.reflect.KClass
 
 /**
  * Copyright © 2025 zhun All rights reserved.
@@ -22,15 +25,20 @@ interface IRouter {
     /**
      * 导航
      * @param route 目的地路由
-     * @param popUpToRoute 弹出路由?
-     * @param inclusive 是否也弹出popUpToRoute
-     * @param isSingleTop Boolean
+     */
+    fun to(route: Any)
+
+    /**
+     * 导航
+     * @param route 目的地路由
+     * @param navOptions NavOptions
+     * @param navigatorExtras Navigator.Extras?
+     *
      */
     fun to(
         route: Any,
-        popUpToRoute: Any? = null,
-        inclusive: Boolean = false,
-        isSingleTop: Boolean = false,
+        navOptions: NavOptions,
+        navigatorExtras: Navigator.Extras?=null
     )
 
     /**
