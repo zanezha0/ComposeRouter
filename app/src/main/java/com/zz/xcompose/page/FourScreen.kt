@@ -8,6 +8,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.zz.xcompose.nav.OneDestination
 import com.zz.xcompose.nav.TwoDestination
@@ -37,4 +38,11 @@ fun FourScreen(user: FourDestination) {
         }
     }
 
+}
+
+
+@Preview(showSystemUi = true)
+@Composable
+private fun FourScreenPreview() {
+    FourScreen(FourDestination("111","xxx"))
 }
