@@ -28,9 +28,12 @@ object Router: IRouter {
     }
 
     override fun to(route: Any) {
-        navigate(RouterIntent.To(route = route))
+        navigate(
+            RouterIntent.To(
+                route = route
+            )
+        )
     }
-
 
     override fun to(route: Any, navOptions: NavOptions, navigatorExtras: Navigator.Extras?) {
         navigate(RouterIntent.ToWithOptions(route = route,navOptions,navigatorExtras))

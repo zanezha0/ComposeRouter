@@ -8,13 +8,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.navigation.navOptions
 import com.zz.xcompose.nav.FourDestination
 import com.zz.xcompose.nav.OneDestination
 import com.zz.xcompose.nav.ThreeDestination
 import com.zz.router.Router
-
+import com.zz.router.generateRouteTemplate
 
 
 @Composable
@@ -39,9 +40,10 @@ fun ThreeScreen(id: String) {
                     saveState = true
                     inclusive = true
                 }
+                launchSingleTop = true
                 restoreState = true
             }
-            Router.to(route=FourDestination("Replace From Three", "110"),navOptions)
+            Router.to(route=FourDestination("Replace From Three", "110"),navOptions=navOptions)
         }) {
             Text(text = "Replace FourScreen")
         }
@@ -60,4 +62,10 @@ fun ThreeScreen(id: String) {
             Text(text = "Back for result")
         }
     }
+}
+
+@Preview(showSystemUi = true)
+@Composable
+private fun ThreeScreenPreview() {
+    ThreeScreen("111")
 }

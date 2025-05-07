@@ -25,9 +25,11 @@ fun NavController.handleComposeNavigationIntent(intent: RouterIntent, activity: 
         is RouterIntent.To -> {
             navigate(intent.route)
         }
+
         is RouterIntent.ToWithOptions -> {
             navigate(intent.route, intent.navOptions,intent.navigatorExtras)
         }
+
         is RouterIntent.Replace -> {
             navigate(intent.route) {
                 launchSingleTop = intent.isSingleTop

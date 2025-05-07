@@ -42,4 +42,5 @@ dependencies {
     api(libs.androidx.navigation.compose)
     api(libs.androidx.compose.ui)
     api(libs.androidx.core.ktx)
+    api(libs.kotlin.reflect)
 }

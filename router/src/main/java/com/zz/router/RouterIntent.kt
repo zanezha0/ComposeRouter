@@ -44,7 +44,6 @@ sealed class RouterIntent {
         val navigatorExtras: Navigator.Extras?=null
     ): RouterIntent()
 
-
     /**
      * 替换当前导航/弹出当前导航并导航到指定目的地
      * @property route 当前导航
