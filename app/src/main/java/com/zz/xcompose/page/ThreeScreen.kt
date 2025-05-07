@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
+import androidx.navigation.navOptions
 import com.zz.xcompose.nav.FourDestination
 import com.zz.xcompose.nav.OneDestination
 import com.zz.xcompose.nav.ThreeDestination
@@ -33,7 +34,14 @@ fun ThreeScreen(id: String) {
             Text(text = "To FourScreen")
         }
         Button(onClick = {
-            Router.to(route=FourDestination("Replace From Three", "110"),popUpToRoute=ThreeDestination("Three"),inclusive = true)
+            val navOptions = navOptions {
+                popUpTo<ThreeDestination> {
+                    saveState = true
+                    inclusive = true
+                }
+                restoreState = true
+            }
+            Router.to(route=FourDestination("Replace From Three", "110"),navOptions)
         }) {
             Text(text = "Replace FourScreen")
         }
