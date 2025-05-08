@@ -78,7 +78,7 @@ class MainActivity : ComponentActivity() {
                             modifier = Modifier
                                 .fillMaxSize()
                                 .padding(innerPadding)
-                                .padding(top = 100.dp),
+                            ,
                             contentAlignment = androidx.compose.ui.Alignment.TopCenter,
                         ) {
                             RouterEffectSample(appState)
