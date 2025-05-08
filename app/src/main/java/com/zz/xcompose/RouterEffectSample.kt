@@ -14,14 +14,29 @@ import com.zz.xcompose.page.OneScreen
 import com.zz.xcompose.page.ThreeScreen
 import com.zz.xcompose.page.TwoScreen
 import com.zz.router.RouterEffect
+import com.zz.xcompose.nav.MainDestination
+import com.zz.xcompose.nav.Tab1Destination
+import com.zz.xcompose.nav.Tab2Destination
+import com.zz.xcompose.page.MainScreen
+import com.zz.xcompose.page.Tab1Screen
+import com.zz.xcompose.page.Tab2Screen
 
 
 @Composable
 fun RouterEffectSample(appState: AppState) {
     RouterEffect(
         navController = appState.navController,
-        startDestination = OneDestination,
+        startDestination = Tab1Destination,
     ) {
+        composable<MainDestination> {
+            MainScreen()
+        }
+        composable<Tab1Destination> {
+            Tab1Screen()
+        }
+        composable<Tab2Destination> {
+            Tab2Screen()
+        }
         composable<OneDestination> {
             OneScreen()
         }

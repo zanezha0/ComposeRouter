@@ -60,4 +60,10 @@ dependencies {
     api(libs.androidx.navigation.compose)
     implementation(libs.gson)
     implementation("org.jetbrains.kotlin:kotlin-stdlib:2.1.20")
+    implementation("androidx.compose.material3:material3-adaptive-navigation-suite-android:1.4.0-alpha08")
+    implementation("androidx.compose.material:material-icons-core-android:1.7.8")
+    implementation("androidx.compose.material:material-icons-core:1.7.8")
+    implementation("androidx.compose.material:material-icons-extended-android:1.7.8")
+    implementation("androidx.compose.material:material-icons-extended:1.7.8")
+
 }

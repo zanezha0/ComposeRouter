@@ -39,6 +39,10 @@ interface IRouter {
         navigatorExtras: Navigator.Extras?=null
     )
 
+    /**
+     * 切换tab
+     */
+    fun switchTab(route: Any)
 
     /**
      * 弹出当前栈并导航到

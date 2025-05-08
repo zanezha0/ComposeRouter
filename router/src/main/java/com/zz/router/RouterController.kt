@@ -2,6 +2,9 @@ package com.zz.router
 
 import android.app.Activity
 import androidx.navigation.NavController
+import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.navOptions
+
 /**
  * Copyright © 2025 zhun All rights reserved.
  * Created by ZhaoZhun on 2025/3/30 21:20.
@@ -28,6 +31,18 @@ fun NavController.handleComposeNavigationIntent(intent: RouterIntent, activity: 
 
         is RouterIntent.ToWithOptions -> {
             navigate(intent.route, intent.navOptions,intent.navigatorExtras)
+        }
+
+        is RouterIntent.SwitchTab -> {
+
+            val topLevelNavOptions = navOptions {
+                popUpTo(graph.findStartDestination().id) {
+                    saveState = true
+                }
+                launchSingleTop = true
+                restoreState = true
+            }
+            navigate(intent.route,navOptions = topLevelNavOptions)
         }
 
         is RouterIntent.Replace -> {

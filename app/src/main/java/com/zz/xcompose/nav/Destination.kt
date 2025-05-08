@@ -3,6 +3,15 @@ package com.zz.xcompose.nav
 import kotlinx.serialization.Serializable
 
 @Serializable
+object MainDestination
+
+@Serializable
+object Tab1Destination
+
+@Serializable
+object Tab2Destination
+
+@Serializable
 object OneDestination
 
 @Serializable

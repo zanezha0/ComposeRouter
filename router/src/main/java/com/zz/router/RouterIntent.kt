@@ -45,6 +45,13 @@ sealed class RouterIntent {
     ): RouterIntent()
 
     /**
+     * 切换Tab
+     */
+    data class SwitchTab(
+        val route: Any
+    ): RouterIntent()
+
+    /**
      * 替换当前导航/弹出当前导航并导航到指定目的地
      * @property route 当前导航
      * @property isSingleTop 是否是栈中单实例模式
