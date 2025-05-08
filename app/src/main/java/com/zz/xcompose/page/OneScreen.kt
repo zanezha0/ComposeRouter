@@ -3,7 +3,9 @@ package com.zz.xcompose.page
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
@@ -37,7 +39,7 @@ fun OneScreen() {
             println("A 页面收到数据: $result")
         }
     }
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(modifier = Modifier.fillMaxSize().background(Color(0xfff1fded)), horizontalAlignment = Alignment.CenterHorizontally) {
         Text(text = "OneScreen", fontSize = 30.sp, color = Color.Red)
         // 显示结果
         val result = viewModel.result.collectAsState()

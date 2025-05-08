@@ -28,7 +28,7 @@ import com.zz.xcompose.nav.Tab1Destination
 fun Tab2Screen() {
     val state = rememberScrollState()
     Column(modifier = Modifier
-        .fillMaxSize()
+        .fillMaxSize().background(Color(0xfff1fded))
         .verticalScroll(state), horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally) {
         Button(colors = ButtonDefaults.buttonColors(Color.Red), onClick = {
             Router.switchTab(Tab1Destination)

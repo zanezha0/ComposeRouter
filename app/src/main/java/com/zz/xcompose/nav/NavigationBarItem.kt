@@ -47,11 +47,11 @@ fun RowScope.XNavigationBarItem(
         label = label,
         alwaysShowLabel = alwaysShowLabel,
         colors = NavigationBarItemDefaults.colors(
-            selectedIconColor = Color.Red,
-            unselectedIconColor = Color.Gray,
-            selectedTextColor = Color.Red,
-            unselectedTextColor = Color.Gray,
-            indicatorColor = Color.Yellow,
+            selectedIconColor = Color(0xff00f82e),
+            unselectedIconColor = Color(0xff181717),
+            selectedTextColor = Color(0xff00f82e),
+            unselectedTextColor = Color(0xff181717),
+            indicatorColor = Color(0xfff1fded),
         ),
     )
 }

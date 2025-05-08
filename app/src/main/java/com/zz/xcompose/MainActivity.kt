@@ -1,6 +1,7 @@
 package com.zz.xcompose
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.LocalActivity
 import androidx.activity.compose.setContent
@@ -23,12 +24,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.zz.router.Router
+import com.zz.xcompose.nav.MainDestination
 import com.zz.xcompose.nav.Tab1Destination
 import com.zz.xcompose.nav.Tab2Destination
 import com.zz.xcompose.nav.XNavigationBar
 import com.zz.xcompose.nav.XNavigationBarItem
+import com.zz.xcompose.page.MainScreen
 import com.zz.xcompose.ui.theme.XComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -41,44 +45,47 @@ class MainActivity : ComponentActivity() {
             TabEntity("Tab2", Icons.Outlined.Bookmarks, Icons.Rounded.Bookmarks, Tab2Destination),
         )
         setContent {
-            var selectIndex  = remember { mutableIntStateOf(0) }
+            var selectIndex = remember { mutableIntStateOf(0) }
             val appState = rememberAppState()
             val navBackStackEntry = appState.navController.currentBackStackEntryAsState().value
             val currentRoute = navBackStackEntry?.destination?.route
+            Log.e("currentRoute", currentRoute + "")
+            val tempIndex = tabList.indexOfFirst { it.router.javaClass.name == currentRoute }
+            selectIndex.value = if ( tempIndex>=0) tempIndex else 0
             XComposeTheme {
                 CompositionLocalProvider(LocalAppState provides appState) {
-//                    if (currentRoute in tabList.map { it.router }.toList())
                     Scaffold(modifier = Modifier.fillMaxSize(), bottomBar = {
-                        XNavigationBar {
-                            tabList.forEachIndexed { index, item ->
-                                XNavigationBarItem(
-                                    icon = {
-                                        Icon(
-                                            imageVector = item.icon,
-                                            contentDescription = item.title,
-                                        )
-                                    },
-                                    selectedIcon = {
-                                        Icon(
-                                            imageVector = item.selectedIcon,
-                                            contentDescription = item.title,
-                                        )
-                                    },
-                                    label = { Text(item.title) },
-                                    selected = index == selectIndex.value,
-                                    onClick = {
-                                        selectIndex.value = index
-                                        Router.switchTab(item.router)
-                                    },
-                                )
+                        if (currentRoute in tabList.map { it.router.javaClass.name } || currentRoute == null) {
+                            XNavigationBar {
+                                tabList.forEachIndexed { index, item ->
+                                    XNavigationBarItem(
+                                        icon = {
+                                            Icon(
+                                                imageVector = item.icon,
+                                                contentDescription = item.title,
+                                            )
+                                        },
+                                        selectedIcon = {
+                                            Icon(
+                                                imageVector = item.selectedIcon,
+                                                contentDescription = item.title,
+                                            )
+                                        },
+                                        label = { Text(item.title) },
+                                        selected = index == selectIndex.value,
+                                        onClick = {
+                                            selectIndex.value = index
+                                            Router.switchTab(item.router)
+                                        },
+                                    )
+                                }
                             }
                         }
                     }) { innerPadding ->
                         Box(
                             modifier = Modifier
                                 .fillMaxSize()
-                                .padding(innerPadding)
-                            ,
+                                .padding(innerPadding),
                             contentAlignment = androidx.compose.ui.Alignment.TopCenter,
                         ) {
                             RouterEffectSample(appState)
