@@ -11,8 +11,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Bookmarks
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.ManageAccounts
 import androidx.compose.material.icons.outlined.Upcoming
 import androidx.compose.material.icons.rounded.Bookmarks
+import androidx.compose.material.icons.rounded.Commute
+import androidx.compose.material.icons.rounded.Home
+import androidx.compose.material.icons.rounded.ManageAccounts
 import androidx.compose.material.icons.rounded.Upcoming
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -41,8 +46,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
 
         val tabList = listOf(
-            TabEntity("Tab1", Icons.Outlined.Upcoming, Icons.Rounded.Upcoming, Tab1Destination),
-            TabEntity("Tab2", Icons.Outlined.Bookmarks, Icons.Rounded.Bookmarks, Tab2Destination),
+            TabEntity("HOME", Icons.Outlined.Home, Icons.Rounded.Home, Tab1Destination),
+            TabEntity("MY", Icons.Outlined.ManageAccounts, Icons.Rounded.ManageAccounts, Tab2Destination),
         )
         setContent {
             var selectIndex = remember { mutableIntStateOf(0) }
