@@ -3,6 +3,7 @@ package com.zz.xcompose
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.compose.LocalActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -41,6 +42,7 @@ import com.zz.xcompose.page.MainScreen
 import com.zz.xcompose.ui.theme.XComposeTheme
 
 class MainActivity : ComponentActivity() {
+    private var exitTime = 0L
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -49,6 +51,7 @@ class MainActivity : ComponentActivity() {
             TabEntity("HOME", Icons.Outlined.Home, Icons.Rounded.Home, Tab1Destination),
             TabEntity("MY", Icons.Outlined.ManageAccounts, Icons.Rounded.ManageAccounts, Tab2Destination),
         )
+
         setContent {
             var selectIndex = remember { mutableIntStateOf(0) }
             val appState = rememberAppState()
@@ -100,6 +103,17 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+
+        //双击返回键回退桌面
+        onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (System.currentTimeMillis() - exitTime > 2000) {
+                    exitTime = System.currentTimeMillis()
+                } else {
+                    moveTaskToBack(true)
+                }
+            }
+        })
     }
 }
 
