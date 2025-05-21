@@ -1,6 +1,6 @@
 # Compose 导航封装
 
-### 导航
+### 导航带navOptions
 ```kotlin
 val navOptions = navOptions {
     popUpTo<ThreeDestination> {
@@ -13,6 +13,17 @@ val navOptions = navOptions {
 Router.to(TwoDestination,navOptions)
 ```
 
+### 导航
+```kotlin
+Router.to(TwoDestination)
+```
+
+### 切换tab
+```kotlin
+  Router.switchTab(Tab1Destination)
+```
+
+
 ### 清除返回栈
 ```kotlin
 Router.offAllTo(OneDestination)
@@ -20,7 +31,6 @@ Router.offAllTo(OneDestination)
 
 
 ### 返回
-
 ```kotlin
 Router.back()
 ```

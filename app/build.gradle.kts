@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     api(project(":router"))
+
     api(libs.androidx.navigation.compose)
     implementation(libs.gson)
     implementation("org.jetbrains.kotlin:kotlin-stdlib:2.1.20")

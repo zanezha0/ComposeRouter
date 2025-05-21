@@ -1,5 +1,6 @@
 package com.zz.xcompose.page
 
+import android.util.Log
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -12,6 +13,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -26,6 +28,12 @@ import com.zz.xcompose.nav.Tab1Destination
  */
 @Composable
 fun Tab2Screen() {
+    LaunchedEffect(Unit) {
+        Log.d("Screen","Tab2Screen")
+    }
+    LaunchedEffect(true) {
+        Log.d("Screen","Tab2Screen1")
+    }
     val state = rememberScrollState()
     Column(modifier = Modifier
         .fillMaxSize().background(Color(0xfff1fded))
